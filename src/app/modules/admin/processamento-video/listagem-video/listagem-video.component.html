@@ -1,0 +1,59 @@
+<div class="sm:absolute sm:inset-0 flex flex-col flex-auto min-w-0 sm:overflow-hidden bg-card dark:bg-transparent">
+    <!-- Header -->
+    <div class="relative flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-4 border-b">
+      <!-- Loader -->
+      
+      <!-- Title -->
+      <div class="text-4xl font-extrabold tracking-tight">Lista de Vídeos</div>
+      <!-- Actions -->
+      <div class="flex shrink-0 items-center mt-6 sm:mt-0 sm:ml-4">
+        <button class="ml-4 button-rounded-mat" mat-flat-button [color]="'primary'" (click)="add()">
+          <mat-icon [svgIcon]="'heroicons_outline:plus'" ></mat-icon>
+          <span class="ml-2 mr-1">Incluir</span>
+        </button>
+      </div>
+    </div>
+  
+    <div class="flex flex-auto overflow-hidden px-4 pt-4">
+      <div class="flex flex-col flex-auto overflow-auto">
+        <dx-data-grid
+          id="gridContainer"
+          [dataSource]="listaUploads"
+          keyExpr="id"
+          [showBorders]="true"
+          [showRowLines]="true"
+          [remoteOperations]="true"
+          [focusedRowEnabled]="true">
+          <dxi-column dataField="nomeUsuario" caption="Nome do Usuário" dataType="string"></dxi-column>
+          <dxi-column dataField="nomeVideo" caption="Título do Vídeo" dataType="string"></dxi-column>
+          <dxi-column dataField="dataCriacao" caption="Data de Cadastro" format="dd/MM/yyyy HH:mm" dataType="datetime"></dxi-column>
+          <dxi-column caption="Ação" [width]="150" [allowFiltering]="false" 
+          [allowSorting]="false"
+          cellTemplate="cellTemplate2">
+          </dxi-column>   
+      
+          <dxo-paging [pageSize]="15"></dxo-paging>
+          <dxo-pager
+              [showPageSizeSelector]="false"
+              [allowedPageSizes]="[5, 10, 15]">
+          </dxo-pager>
+          <dxo-filter-row
+              [visible]="'true'">
+          </dxo-filter-row>                         
+          <div *dxTemplate="let data of 'cellTemplate2'">
+            <div class="flex flex-row gap-1">
+              <div>
+                <a [href]="data.data.urlPasta" download="teste.zip">Baixar zip</a>
+            </div>
+      
+              
+              
+            </div>
+          </div>     
+       
+        </dx-data-grid>
+      </div>
+  </div>
+
+  
+    </div>
