@@ -5,8 +5,7 @@ Este é um projeto de frontend que permite aos usuários fazerem upload de image
 ## Funcionalidades
 
 - Upload de vídeos
-- Processamento de vídeos para geração de screenshots
-- Integração com RabbitMQ para comunicação assíncrona com o backend
+- Listagem de pasta com imagens zipadas
 
 ## Pré-requisitos
 
